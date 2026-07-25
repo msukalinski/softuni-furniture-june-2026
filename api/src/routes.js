@@ -7,6 +7,7 @@ routes.get('/data/catalog', furnitureController.getAll);
 
 //User routes
 routes.post('/users/register', userController.register);
+routes.post('/users/login', userController.login)
 routes.get('/users/logout', userController.logout)
 
 export default routes;

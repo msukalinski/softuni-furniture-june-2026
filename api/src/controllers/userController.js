@@ -18,6 +18,23 @@ export async function register(req, res) {
     };
 };
 
-export async function logout(req, res) {
-    res.json({message: 'Logout successful'});
+export async function login(req, res) {
+    const { email, password } = req.body;
+
+    try {
+        const user = await userService.login(email, password);
+        const token = generateAuthToken(user);
+
+        res.json({
+            _id: user.id,
+            email: user.email,
+            accessToken: token
+        });
+    } catch (error) {
+        return res.status(400).json({ error: error.message })
+    }
 }
+
+export async function logout(req, res) {
+    res.json({ message: 'Logout successful' });
+};
