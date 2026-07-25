@@ -15,5 +15,9 @@ export async function register(req, res) {
         });
     } catch (error) {
         return res.status(400).json({ error: error.errors });
-    }
+    };
+};
+
+export async function logout(req, res) {
+    res.json({message: 'Logout successful'});
 }
